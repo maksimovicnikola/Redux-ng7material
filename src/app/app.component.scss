@@ -1,4 +1,4 @@
-.example-container {
+.container {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -8,24 +8,64 @@
   right: 0;
 }
 
-.example-is-mobile .example-toolbar {
+.is-mobile .toolbar {
   position: fixed;
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
   z-index: 2;
 }
 
-h1.example-app-name {
-  margin-left: 8px;
+h1.main-title {
+  margin: 0 auto;
 }
 
-.example-sidenav-container {
+.sidenav-container {
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+         causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
   flex: 1;
 }
 
-.example-is-mobile .example-sidenav-container {
+.is-mobile .sidenav-container {
   /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-       `<body>` to be our scrolling element for mobile layouts. */
+         `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
+}
+
+.side-menu-shadow {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.side-menu-item-row {
+  padding: 8% 10%;
+  position: relative;
+  box-sizing: border-box;
+  height: 50px;
+  margin-top: 5px;
+
+  &:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+}
+
+.icon-person-side-menu {
+  width: 15%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.side-menu-item-row {
+  span {
+    position: absolute;
+    width: 75%;
+    left: 25%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding-left: 10px;
+    text-transform: capitalize;
+    font-weight: 900;
+  }
 }
