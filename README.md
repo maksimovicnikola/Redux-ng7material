@@ -1,6 +1,7 @@
 # Ng7Material
 # ng-material-7
 Using of angular material 7.
+Implemented Redux NgRx and ngx-translate.
 
 Implemented Redux NgRx and ngx-translate.
 

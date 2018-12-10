@@ -1,7 +1,7 @@
-import { HomepageComponent } from './homepage/homepage.component';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { UserInfoComponent } from './user-info/user-info.component';
+import { ContactInfoComponent } from "./contact-info/contact-info.component";
+import { HomepageComponent } from "./homepage/homepage.component";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
 const routes: Routes = [
   {
@@ -9,8 +9,8 @@ const routes: Routes = [
     component: HomepageComponent
   },
   {
-    path: "user",
-    component: UserInfoComponent
+    path: "contact",
+    component: ContactInfoComponent
   }
 ];
 
@@ -18,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
