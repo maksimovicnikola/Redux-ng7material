@@ -1,28 +1,43 @@
-<router-outlet></router-outlet>
 <div class="container" [class.is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="toolbar">
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <h1 class="main-title" text-center>{{ 'material_title' | translate }}</h1>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="addContact()">
+        <mat-icon>person_add</mat-icon>
+        <span>{{'add_contact' | translate}}</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voicemail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav class="min-w-20p side-menu-shadow" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56">
+    <mat-sidenav class="min-w-20p side-menu-shadow" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
-        <div class="side-menu-item-row">
-          <img src="../assets/icons/people/gentleman.svg" alt="gentleman" class="icon-person-side-menu">
-          <span>Nikola Nikolic</span>
+        <div class="side-menu-item-row" *ngFor="let contact of (count$ | async)">
+          <img *ngIf="contact.ImageAvatarSource" [src]=contact.ImageAvatarSource [alt]=contact.ImageAvatarTitle class="icon-person-side-menu">
+          <span>{{contact.Name}}</span>
         </div>
-        <div class="side-menu-item-row">
-          <img src="../assets/icons/people/girl.svg" alt="girl" class="icon-person-side-menu">
-          <span>Jovana Jovanovic</span>
-        </div>
-        <div class="side-menu-item-row">
-          <img src="../assets/icons/people/wonder-women.svg" alt="wonder-women" class="icon-person-side-menu">
-          <span>Ema Emic</span>
-        </div>
+        <button mat-flat-button color="primary" (click)="addContact()">Increment</button>
+
+        <div *ngFor="let item of ">Current Count: {{ item.Name }}</div>
+
+        <button mat-raised-button color="warn" (click)="removeContact()">Decrement</button>
+
+        <button mat-stroked-button color="warn" (click)="removeAllContacts()">Reset Counter</button>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
